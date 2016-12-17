@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RemitoCrescaDS" targetNamespace="http://tempuri.org/RemitoCrescaDS.xsd" xmlns:mstns="http://tempuri.org/RemitoCrescaDS.xsd" xmlns="http://tempuri.org/RemitoCrescaDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="connString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="connString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.connString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vRemitoParaguayTableAdapter" GeneratorDataComponentClassName="vRemitoParaguayTableAdapter" Name="vRemitoParaguay" UserDataComponentName="vRemitoParaguayTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="connString (Web.config)" DbObjectName="CartaDePorte.dbo.vRemitoParaguay" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        idsolicitud, Descripcion, Cee, FechaCreacion, FechaVencimiento, NumeroRemision, FechaDeEmision, RazonSocial, CUIT, Direccion, MotivoTraslado, CteDeVta, 
+                         EPDireccion, LocPartida, ProvPartida, EDDireccion, LocLlegada, ProvLlegada, KmRecorridos, PatenteCamion, PatenteAcoplado, ChoferRazonSocial, ChoferCUIT, 
+                         ChoferDomicilio, MarcaVehiculo, Cantidad, KG, DescripcionDetallada, TranspRazonSocial, TransportistaCUIT, HabilitacionNum
+FROM            vRemitoParaguay</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idsolicitud" DataSetColumn="idsolicitud" />
+              <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
+              <Mapping SourceColumn="Cee" DataSetColumn="Cee" />
+              <Mapping SourceColumn="FechaCreacion" DataSetColumn="FechaCreacion" />
+              <Mapping SourceColumn="FechaVencimiento" DataSetColumn="FechaVencimiento" />
+              <Mapping SourceColumn="FechaDeEmision" DataSetColumn="FechaDeEmision" />
+              <Mapping SourceColumn="RazonSocial" DataSetColumn="RazonSocial" />
+              <Mapping SourceColumn="CUIT" DataSetColumn="CUIT" />
+              <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
+              <Mapping SourceColumn="MotivoTraslado" DataSetColumn="MotivoTraslado" />
+              <Mapping SourceColumn="CteDeVta" DataSetColumn="CteDeVta" />
+              <Mapping SourceColumn="KmRecorridos" DataSetColumn="KmRecorridos" />
+              <Mapping SourceColumn="PatenteCamion" DataSetColumn="PatenteCamion" />
+              <Mapping SourceColumn="PatenteAcoplado" DataSetColumn="PatenteAcoplado" />
+              <Mapping SourceColumn="ChoferRazonSocial" DataSetColumn="ChoferRazonSocial" />
+              <Mapping SourceColumn="ChoferCUIT" DataSetColumn="ChoferCUIT" />
+              <Mapping SourceColumn="ChoferDomicilio" DataSetColumn="ChoferDomicilio" />
+              <Mapping SourceColumn="EPDireccion" DataSetColumn="EPDireccion" />
+              <Mapping SourceColumn="LocPartida" DataSetColumn="LocPartida" />
+              <Mapping SourceColumn="ProvPartida" DataSetColumn="ProvPartida" />
+              <Mapping SourceColumn="EDDireccion" DataSetColumn="EDDireccion" />
+              <Mapping SourceColumn="LocLlegada" DataSetColumn="LocLlegada" />
+              <Mapping SourceColumn="ProvLlegada" DataSetColumn="ProvLlegada" />
+              <Mapping SourceColumn="NumeroRemision" DataSetColumn="NumeroRemision" />
+              <Mapping SourceColumn="MarcaVehiculo" DataSetColumn="MarcaVehiculo" />
+              <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="KG" DataSetColumn="KG" />
+              <Mapping SourceColumn="DescripcionDetallada" DataSetColumn="DescripcionDetallada" />
+              <Mapping SourceColumn="TranspRazonSocial" DataSetColumn="TranspRazonSocial" />
+              <Mapping SourceColumn="TransportistaCUIT" DataSetColumn="TransportistaCUIT" />
+              <Mapping SourceColumn="HabilitacionNum" DataSetColumn="HabilitacionNum" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RemitoCrescaDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RemitoCrescaDS" msprop:Generator_UserDSName="RemitoCrescaDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vRemitoParaguay" msprop:Generator_TableClassName="vRemitoParaguayDataTable" msprop:Generator_TableVarName="tablevRemitoParaguay" msprop:Generator_TablePropName="vRemitoParaguay" msprop:Generator_RowDeletingName="vRemitoParaguayRowDeleting" msprop:Generator_RowChangingName="vRemitoParaguayRowChanging" msprop:Generator_RowEvHandlerName="vRemitoParaguayRowChangeEventHandler" msprop:Generator_RowDeletedName="vRemitoParaguayRowDeleted" msprop:Generator_UserTableName="vRemitoParaguay" msprop:Generator_RowChangedName="vRemitoParaguayRowChanged" msprop:Generator_RowEvArgName="vRemitoParaguayRowChangeEvent" msprop:Generator_RowClassName="vRemitoParaguayRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idsolicitud" msprop:Generator_ColumnVarNameInTable="columnidsolicitud" msprop:Generator_ColumnPropNameInRow="idsolicitud" msprop:Generator_ColumnPropNameInTable="idsolicitudColumn" msprop:Generator_UserColumnName="idsolicitud" type="xs:int" />
+              <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cee" msprop:Generator_ColumnVarNameInTable="columnCee" msprop:Generator_ColumnPropNameInRow="Cee" msprop:Generator_ColumnPropNameInTable="CeeColumn" msprop:Generator_UserColumnName="Cee" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaCreacion" msprop:Generator_ColumnVarNameInTable="columnFechaCreacion" msprop:Generator_ColumnPropNameInRow="FechaCreacion" msprop:Generator_ColumnPropNameInTable="FechaCreacionColumn" msprop:Generator_UserColumnName="FechaCreacion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaVencimiento" msprop:Generator_ColumnVarNameInTable="columnFechaVencimiento" msprop:Generator_ColumnPropNameInRow="FechaVencimiento" msprop:Generator_ColumnPropNameInTable="FechaVencimientoColumn" msprop:Generator_UserColumnName="FechaVencimiento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaDeEmision" msprop:Generator_ColumnVarNameInTable="columnFechaDeEmision" msprop:Generator_ColumnPropNameInRow="FechaDeEmision" msprop:Generator_ColumnPropNameInTable="FechaDeEmisionColumn" msprop:Generator_UserColumnName="FechaDeEmision" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="RazonSocial" msprop:Generator_ColumnVarNameInTable="columnRazonSocial" msprop:Generator_ColumnPropNameInRow="RazonSocial" msprop:Generator_ColumnPropNameInTable="RazonSocialColumn" msprop:Generator_UserColumnName="RazonSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CUIT" msprop:Generator_ColumnVarNameInTable="columnCUIT" msprop:Generator_ColumnPropNameInRow="CUIT" msprop:Generator_ColumnPropNameInTable="CUITColumn" msprop:Generator_UserColumnName="CUIT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Direccion" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDireccion" msprop:Generator_ColumnPropNameInRow="Direccion" msprop:Generator_ColumnPropNameInTable="DireccionColumn" msprop:Generator_UserColumnName="Direccion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="213" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MotivoTraslado" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMotivoTraslado" msprop:Generator_ColumnPropNameInRow="MotivoTraslado" msprop:Generator_ColumnPropNameInTable="MotivoTrasladoColumn" msprop:Generator_UserColumnName="MotivoTraslado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CteDeVta" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCteDeVta" msprop:Generator_ColumnPropNameInRow="CteDeVta" msprop:Generator_ColumnPropNameInTable="CteDeVtaColumn" msprop:Generator_UserColumnName="CteDeVta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="34" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KmRecorridos" msprop:Generator_ColumnVarNameInTable="columnKmRecorridos" msprop:Generator_ColumnPropNameInRow="KmRecorridos" msprop:Generator_ColumnPropNameInTable="KmRecorridosColumn" msprop:Generator_UserColumnName="KmRecorridos" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PatenteCamion" msprop:Generator_ColumnVarNameInTable="columnPatenteCamion" msprop:Generator_ColumnPropNameInRow="PatenteCamion" msprop:Generator_ColumnPropNameInTable="PatenteCamionColumn" msprop:Generator_UserColumnName="PatenteCamion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PatenteAcoplado" msprop:Generator_ColumnVarNameInTable="columnPatenteAcoplado" msprop:Generator_ColumnPropNameInRow="PatenteAcoplado" msprop:Generator_ColumnPropNameInTable="PatenteAcopladoColumn" msprop:Generator_UserColumnName="PatenteAcoplado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChoferRazonSocial" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnChoferRazonSocial" msprop:Generator_ColumnPropNameInRow="ChoferRazonSocial" msprop:Generator_ColumnPropNameInTable="ChoferRazonSocialColumn" msprop:Generator_UserColumnName="ChoferRazonSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="301" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChoferCUIT" msprop:Generator_ColumnVarNameInTable="columnChoferCUIT" msprop:Generator_ColumnPropNameInRow="ChoferCUIT" msprop:Generator_ColumnPropNameInTable="ChoferCUITColumn" msprop:Generator_UserColumnName="ChoferCUIT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChoferDomicilio" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnChoferDomicilio" msprop:Generator_ColumnPropNameInRow="ChoferDomicilio" msprop:Generator_ColumnPropNameInTable="ChoferDomicilioColumn" msprop:Generator_UserColumnName="ChoferDomicilio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="17" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EPDireccion" msprop:Generator_ColumnVarNameInTable="columnEPDireccion" msprop:Generator_ColumnPropNameInRow="EPDireccion" msprop:Generator_ColumnPropNameInTable="EPDireccionColumn" msprop:Generator_UserColumnName="EPDireccion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LocPartida" msprop:Generator_ColumnVarNameInTable="columnLocPartida" msprop:Generator_ColumnPropNameInRow="LocPartida" msprop:Generator_ColumnPropNameInTable="LocPartidaColumn" msprop:Generator_UserColumnName="LocPartida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProvPartida" msprop:Generator_ColumnVarNameInTable="columnProvPartida" msprop:Generator_ColumnPropNameInRow="ProvPartida" msprop:Generator_ColumnPropNameInTable="ProvPartidaColumn" msprop:Generator_UserColumnName="ProvPartida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EDDireccion" msprop:Generator_ColumnVarNameInTable="columnEDDireccion" msprop:Generator_ColumnPropNameInRow="EDDireccion" msprop:Generator_ColumnPropNameInTable="EDDireccionColumn" msprop:Generator_UserColumnName="EDDireccion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LocLlegada" msprop:Generator_ColumnVarNameInTable="columnLocLlegada" msprop:Generator_ColumnPropNameInRow="LocLlegada" msprop:Generator_ColumnPropNameInTable="LocLlegadaColumn" msprop:Generator_UserColumnName="LocLlegada" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProvLlegada" msprop:Generator_ColumnVarNameInTable="columnProvLlegada" msprop:Generator_ColumnPropNameInRow="ProvLlegada" msprop:Generator_ColumnPropNameInTable="ProvLlegadaColumn" msprop:Generator_UserColumnName="ProvLlegada" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NumeroRemision" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumeroRemision" msprop:Generator_ColumnPropNameInRow="NumeroRemision" msprop:Generator_ColumnPropNameInTable="NumeroRemisionColumn" msprop:Generator_UserColumnName="NumeroRemision" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MarcaVehiculo" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMarcaVehiculo" msprop:Generator_ColumnPropNameInRow="MarcaVehiculo" msprop:Generator_ColumnPropNameInTable="MarcaVehiculoColumn" msprop:Generator_UserColumnName="MarcaVehiculo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cantidad" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnKG" msprop:Generator_ColumnPropNameInRow="KG" msprop:Generator_ColumnPropNameInTable="KGColumn" msprop:Generator_UserColumnName="KG" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DescripcionDetallada" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDescripcionDetallada" msprop:Generator_ColumnPropNameInRow="DescripcionDetallada" msprop:Generator_ColumnPropNameInTable="DescripcionDetalladaColumn" msprop:Generator_UserColumnName="DescripcionDetallada" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="401" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TranspRazonSocial" msprop:Generator_ColumnVarNameInTable="columnTranspRazonSocial" msprop:Generator_ColumnPropNameInRow="TranspRazonSocial" msprop:Generator_ColumnPropNameInTable="TranspRazonSocialColumn" msprop:Generator_UserColumnName="TranspRazonSocial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TransportistaCUIT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTransportistaCUIT" msprop:Generator_ColumnPropNameInRow="TransportistaCUIT" msprop:Generator_ColumnPropNameInTable="TransportistaCUITColumn" msprop:Generator_UserColumnName="TransportistaCUIT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="18" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HabilitacionNum" msprop:Generator_ColumnVarNameInTable="columnHabilitacionNum" msprop:Generator_ColumnPropNameInRow="HabilitacionNum" msprop:Generator_ColumnPropNameInTable="HabilitacionNumColumn" msprop:Generator_UserColumnName="HabilitacionNum" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vRemitoParaguay" />
+      <xs:field xpath="mstns:idsolicitud" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

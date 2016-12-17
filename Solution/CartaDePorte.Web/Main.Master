@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="CartaDePorte.Web.Main" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+
+    <script type="text/javascript">
+        siteRoot = '<%# GetFullRootUrl() %>';
+    </script>
+
+
+    <title>Carta de Porte 2.0</title>
+    <link type="image/x-icon" href="<%# ResolveUrl("~/") %>Content/Images/favicon_icon.ico" rel="icon" />
+    <link type="image/x-icon" href="<%# ResolveUrl("~/") %>Content/Images/favicon_shut.ico" rel="shortcut icon" />
+
+    <link type="text/css" rel="stylesheet" href="<%# ResolveUrl("~/") %>Content/Site.css" />
+    <link type="text/css" rel="stylesheet" href="<%# ResolveUrl("~/") %>Content/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="<%# ResolveUrl("~/") %>Content/disclaimer.css" />
+
+
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/jquery-ui-1.8.min.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/jquery.jRMenuMore.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/jsapi.js"></script>
+    <%--<script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/webkit.js"></script>--%>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/fnCartaDePorte.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/fnMismetodos.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Scripts/jquery.searchabledropdown-1.0.8.min.js"></script>
+
+    <script type="text/javascript" src="<%# ResolveUrl("~/") %>Main.Master.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <input type="hidden" id="refreshed" value="no" />
+
+        <asp:HiddenField ID="hiddenTab" runat="server" />
+
+        <div class="page" style="min-height: 600px; width: 1100px;">
+
+            <div class="header">
+
+                <div class="title">
+                    <h1>Carta de Porte 2.0</h1>
+                </div>
+
+                <div class="loginDisplay">
+                    <span id="infoEmpresa">
+                        <asp:Label ID="lblInfoEmpresa" runat="server"></asp:Label>
+                        <asp:DropDownList ID="cboEmpresa" runat="server" onchange="cboEmpresa_OnChange(this)"></asp:DropDownList>
+                    </span>
+                    <asp:Label ID="lblInfoUsuario" runat="server"></asp:Label>
+                </div>
+
+                <div class="clear hideSkiplinkXXXX" id="divNav">
+
+                    <ul id="Navigation" class="ulMenu">
+                        <li><a href="javascript: menu_OnClick('Index.aspx');" runat="server">Principal</a></li>
+                        <li><a href="javascript: menu_OnClick('BandejaDeSalida.aspx');" runat="server">Bandeja de Salida</a></li>
+                        <li><a href="javascript: menu_OnClick('Administracion.aspx');" runat="server">Administracion</a></li>
+                        <li><a href="javascript: menu_OnClick('Reportes.aspx');" runat="server">Reportes</a></li>
+                        <li><a href="javascript: menu_OnClick('BandejaDeEntrada.aspx');" runat="server">Recibidas</a></li>
+                        <li><a href="javascript: menu_OnClick('Monitor.aspx');" runat="server">Monitoreo</a></li>
+                        <li id="menuC116A" runat="server"><a href="javascript: menu_OnClick('Buscardor1116A.aspx');" runat="server">C1116A</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+            <div class="main">
+
+                <div class="mainContent">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+</body>
+
+
+
+</html>

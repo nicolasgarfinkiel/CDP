@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://scr.irsa.com/WebServices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://scr.irsa.com/WebServices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://scr.irsa.com/WebServices/">
+      <s:element name="testDebug">
+        <s:complexType />
+      </s:element>
+      <s:element name="testDebugResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testDebugResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcesarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsCliente" type="tns:ClienteXI" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClienteXI">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RazonSocial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreFantasia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUIT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientePrincipal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Piso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Poblacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GrupoComercial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClaveGrupo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tratamiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionGE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProcesarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcesarClienteResult" type="tns:MsgOut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MsgOut">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="pValor" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="pMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProcesarProveedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsProveedor" type="tns:ProveedorXI" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProveedorXI">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Piso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Id_Proveedor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroDocumento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Activo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ProcesarProveedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcesarProveedorResult" type="tns:MsgOut" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecibirPrefacturacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mensajes" type="tns:ArrayOfSapMensajePrefactura" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSapMensajePrefactura">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SapMensajePrefactura" nillable="true" type="tns:SapMensajePrefactura" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SapMensajePrefactura">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumentoRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumentoSap" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoMensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TextoMensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecibirPrefacturacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="testDebugSoapIn">
+    <wsdl:part name="parameters" element="tns:testDebug" />
+  </wsdl:message>
+  <wsdl:message name="testDebugSoapOut">
+    <wsdl:part name="parameters" element="tns:testDebugResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcesarCliente" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcesarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarProveedorSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcesarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ProcesarProveedorSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcesarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecibirPrefacturacionSoapIn">
+    <wsdl:part name="parameters" element="tns:RecibirPrefacturacion" />
+  </wsdl:message>
+  <wsdl:message name="RecibirPrefacturacionSoapOut">
+    <wsdl:part name="parameters" element="tns:RecibirPrefacturacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="testDebugHttpGetIn" />
+  <wsdl:message name="testDebugHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="testDebugHttpPostIn" />
+  <wsdl:message name="testDebugHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="cdpSAPSoap">
+    <wsdl:operation name="testDebug">
+      <wsdl:input message="tns:testDebugSoapIn" />
+      <wsdl:output message="tns:testDebugSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarCliente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recibe los datos de un cliente para guardarlos en Carta de Porte</wsdl:documentation>
+      <wsdl:input message="tns:ProcesarClienteSoapIn" />
+      <wsdl:output message="tns:ProcesarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarProveedor">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recibe los datos de un proveedor para guardarlos en Carta de Porte</wsdl:documentation>
+      <wsdl:input message="tns:ProcesarProveedorSoapIn" />
+      <wsdl:output message="tns:ProcesarProveedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecibirPrefacturacion">
+      <wsdl:input message="tns:RecibirPrefacturacionSoapIn" />
+      <wsdl:output message="tns:RecibirPrefacturacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="cdpSAPHttpGet">
+    <wsdl:operation name="testDebug">
+      <wsdl:input message="tns:testDebugHttpGetIn" />
+      <wsdl:output message="tns:testDebugHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="cdpSAPHttpPost">
+    <wsdl:operation name="testDebug">
+      <wsdl:input message="tns:testDebugHttpPostIn" />
+      <wsdl:output message="tns:testDebugHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="cdpSAPSoap" type="tns:cdpSAPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="testDebug">
+      <soap:operation soapAction="http://scr.irsa.com/WebServices/testDebug" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarCliente">
+      <soap:operation soapAction="http://scr.irsa.com/WebServices/ProcesarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarProveedor">
+      <soap:operation soapAction="http://scr.irsa.com/WebServices/ProcesarProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibirPrefacturacion">
+      <soap:operation soapAction="http://scr.irsa.com/WebServices/RecibirPrefacturacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="cdpSAPSoap12" type="tns:cdpSAPSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="testDebug">
+      <soap12:operation soapAction="http://scr.irsa.com/WebServices/testDebug" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarCliente">
+      <soap12:operation soapAction="http://scr.irsa.com/WebServices/ProcesarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcesarProveedor">
+      <soap12:operation soapAction="http://scr.irsa.com/WebServices/ProcesarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecibirPrefacturacion">
+      <soap12:operation soapAction="http://scr.irsa.com/WebServices/RecibirPrefacturacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="cdpSAPHttpGet" type="tns:cdpSAPHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="testDebug">
+      <http:operation location="/testDebug" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="cdpSAPHttpPost" type="tns:cdpSAPHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="testDebug">
+      <http:operation location="/testDebug" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="cdpSAP">
+    <wsdl:port name="cdpSAPSoap" binding="tns:cdpSAPSoap">
+      <soap:address location="http://localhost:4790/cdpSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="cdpSAPSoap12" binding="tns:cdpSAPSoap12">
+      <soap12:address location="http://localhost:4790/cdpSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="cdpSAPHttpGet" binding="tns:cdpSAPHttpGet">
+      <http:address location="http://localhost:4790/cdpSAP.asmx" />
+    </wsdl:port>
+    <wsdl:port name="cdpSAPHttpPost" binding="tns:cdpSAPHttpPost">
+      <http:address location="http://localhost:4790/cdpSAP.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

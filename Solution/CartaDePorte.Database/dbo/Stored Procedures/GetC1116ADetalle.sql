@@ -1,0 +1,14 @@
+﻿CREATE PROCEDURE [dbo].[GetC1116ADetalle]
+(
+	@Id int
+)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	SELECT * FROM C1116ADetalle WHERE IdC1116A = @Id
+
+	
+END
+GO
+

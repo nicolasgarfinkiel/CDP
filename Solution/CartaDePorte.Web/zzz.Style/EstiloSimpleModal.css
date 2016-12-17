@@ -1,0 +1,5 @@
+﻿#basic-modal-content {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color: #ebeff2; border-color: Silver; border: 1; cursor:wait; }
+#simplemodal-container {background-color: #ebeff2; border: #444 4px solid; padding:12px;}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx?wsdl" docRef="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" xmlns:q1="http://framework.irsa.com.ar/WebServices/Security/" binding="q1:SecurityProviderSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" xmlns:q2="http://framework.irsa.com.ar/WebServices/Security/" binding="q2:SecurityProviderSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

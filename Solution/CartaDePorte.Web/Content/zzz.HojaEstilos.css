@@ -1,0 +1,208 @@
+﻿.bodyLogOn
+{
+    background-color: #ebeff2;
+    font-size: small;
+    font-family: Arial, Helvetica, Sans-Serif;
+    margin: 0px;
+    overflow: auto;
+}
+.bodyBienvenidos
+{
+    background-color: #ebeff2;
+    font-size: small;
+    font-family: Arial, Helvetica, Sans-Serif;
+    margin: 0px;
+    overflow: auto;
+}
+.tdBienvenido
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #003366;
+    font-size: 20pt;
+    font-weight: bold;
+}
+.tdLabel
+{
+    padding-bottom: 0px;
+    padding-left: 7px;
+    padding-right: 4px;
+    background-repeat: repeat-y;
+    background-position: left top;
+    height: 10px;
+    color: #000;
+    font-size: 0.7em;
+    padding-top: 0px;
+}
+
+.txtTextBox
+{
+    border-bottom: #83838f 1px solid;
+    border-left: #83838f 1px solid;
+    padding-bottom: 0px;
+    background-color: #fff;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family: Arial, Helvetica, Sans-Serif;
+    height: 2.85ex;
+    color: #000;
+    font-size: 0.7em;
+    border-top: #83838f 1px solid;
+    border-right: #83838f 1px solid;
+    padding-top: 0px;
+}
+.btnLogOn
+{
+    font-family: Arial,Helvetica,sans-serif;
+    border-bottom: #676e75 1px solid;
+    text-align: center;
+    border-left: #676e75 1px solid;
+    padding-bottom: 0px;
+    background-color: #faeeb1;
+    padding-left: 5px;
+    padding-right: 4px;
+    white-space: nowrap;
+    color: #000;
+    font-size: 0.7em;
+    border-top: #676e75 1px solid;
+    cursor: hand;
+    font-weight: normal;
+    border-right: #676e75 1px solid;
+    text-decoration: none;
+    padding-top: 0px;
+}
+.pLabelBar
+{
+    font-family: Arial,Helvetica,sans-serif;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 4px;
+    padding-top: 0px;
+    height: 10px;
+    color: #000;
+    font-size: 0.7em;
+}
+.tbHeaderBienvenidos
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 4px;
+    padding-top: 0px;
+    margin: 0px;
+    height: 30px;
+}
+.tbHeaderSuperior
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+    border-bottom: #fff 0px solid;
+    border-top: #fff 0px solid;
+    border-left: #fff 0px solid;
+    border-right: #fff 0px solid;
+    height: 30px;
+}
+.tdUsuarioBienvenido
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    text-align: left;
+    padding-bottom: 2px;
+    background-color: #323232;
+    font-style: normal;
+    padding-left: 10px;
+    padding-right: 16px;
+    color: #dddddd;
+    font-size: 0.7em;
+    font-weight: bold;
+    padding-top: 0px;
+}
+.tdImagenHeaderSuperior
+{
+    background-image: url(/Content/Images/PortalEvaluacion360.jpg);
+    border-bottom: #ffffff 0px;
+    border-left: #ffffff 0px solid;
+    background-repeat: repeat-x;
+    border-top: #ffffff 0px;
+    border-right: #ffffff 0px solid;
+    height: 30px;
+}
+
+.tdMenuHeaderSuperior
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+    text-align: right;
+    background-color: #dddddd;
+    height: 30px;
+    border-bottom: #fff 0px;
+    border-top: #fff 0px;
+    border-right: #fff 0px solid;
+}
+
+.tbMenuHeaderSuperior
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+    font-style: normal;
+    border-right: #fff 0px solid;
+    border-top: #fff 0px solid;
+    border-bottom: #fff 0px solid;
+    border-top: #fff 0px solid;
+}
+
+.tdLogoRRHH
+{
+    background-image: url(/Content/Images/LogoRRHH.jpg);
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+    border-left: #fff 0px;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    height: 30px;
+    border-top: #fff 0px;
+    border-right: #fff 0px;
+}
+
+.tdImagenPortal
+{
+    background-image: url(/Content/Images/FlashPortalRRHH.jpg);
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;
+}
+.tdMenuesDerecha
+{
+    font-style: normal; 
+    font-family: Arial,Helvetica,sans-serif; 
+    color: #000; 
+    font-size: 0.7em; 
+    font-weight: normal; 
+    white-space: nowrap;
+}
+.tbInformacion
+{
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: small;    
+    padding-top: 11px;
+    padding-bottom: 0px;
+    padding-left: 13px;
+    padding-right: 1px;
+    margin: 0px;
+}
+.tdImagenBienvenidos
+{
+    background-image: url(/Content/Images/LogoFlashBienvenidos.jpg); 
+    width: 100%;
+}
+
+.linkImagenesResumen
+{
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-size: small;
+    font-weight: normal;
+    cursor: hand;
+    color: #204ba2;
+    text-decoration: none;
+    white-space: nowrap;
+}
+

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="jquery,ui,easy,easyui,web">
+	<meta name="description" content="easyui help you build your web page easily!">
+	<title>DataGrid inline editing - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script>
+		var products = [
+		    {productid:'FI-SW-01',name:'Koi'},
+		    {productid:'K9-DL-01',name:'Dalmation'},
+		    {productid:'RP-SN-01',name:'Rattlesnake'},
+		    {productid:'RP-LI-02',name:'Iguana'},
+		    {productid:'FL-DSH-01',name:'Manx'},
+		    {productid:'FL-DLH-02',name:'Persian'},
+		    {productid:'AV-CB-01',name:'Amazon Parrot'}
+		];
+		$(function(){
+			$('#tt').datagrid({
+				title:'Detalle',
+				iconCls:'',
+				width:660,
+				height:250,
+				singleSelect:true,
+				idField: 'Idc1116aDetalle',
+				url: '../../getC1116ADetalleByID.ashx?q=1',
+				columns:[[
+					{ field: 'NumeroCartaDePorte', title: 'Numero Carta De Porte', width: 170, align: 'right', editor: { type: 'numberbox', options: { precision: 0}} },
+					{ field: 'NumeroCertificadoAsociado', title: 'Numero Certificado Asociado', width: 170, align: 'right', editor: 'numberbox' },
+					{ field: 'KgBrutos', title: 'Kg. Brutos', width: 80, align: 'right', editor: { type: 'numberbox', options: { precision: 2}} },
+					{ field: 'FechaRemesa', title: 'Fecha Remesa', width: 100, editor: 'text' },
+					{field:'action',title:'Action',width:120,align:'center',
+						formatter:function(value,row,index){
+							if (row.editing){
+								var s = '<a href="#" onclick="saverow(this)">Guardar</a> ';
+								var c = '<a href="#" onclick="cancelrow(this)">Cancelar</a>';
+								return s+c;
+							} else {
+								var e = '<a href="#" onclick="editrow(this)">Editar</a> ';
+								var d = '<a href="#" onclick="deleterow(this)">Borrar</a>';
+								return e+d;
+							}
+						}
+					}
+				]],
+				onBeforeEdit:function(index,row){
+					row.editing = true;
+					updateActions(index);
+				},
+				onAfterEdit:function(index,row){
+					row.editing = false;
+					updateActions(index);
+				},
+				onCancelEdit:function(index,row){
+					row.editing = false;
+					updateActions(index);
+				}
+			});
+		});
+		function updateActions(index){
+			$('#tt').datagrid('updateRow',{
+				index: index,
+				row:{}
+			});
+        }
+		
+		function getRowIndex(target){
+			var tr = $(target).closest('tr.datagrid-row');
+			return parseInt(tr.attr('datagrid-row-index'));
+		}
+		function editrow(target){
+			$('#tt').datagrid('beginEdit', getRowIndex(target));
+		}
+		function deleterow(target){
+			$.messager.confirm('Confirm','Are you sure?',function(r){
+				if (r){
+					$('#tt').datagrid('deleteRow', getRowIndex(target));
+				}
+			});
+		}
+		function saverow(target){
+			$('#tt').datagrid('endEdit', getRowIndex(target));
+		}
+		function cancelrow(target){
+			$('#tt').datagrid('cancelEdit', getRowIndex(target));
+		}
+		function insert(){
+			var row = $('#tt').datagrid('getSelected');
+			if (row){
+				var index = $('#tt').datagrid('getRowIndex', row);
+			} else {
+			    index = 0;
+			}
+			$('#tt').datagrid('insertRow', {
+				index: index,
+				row:{
+					status:'P'
+				}
+			});
+			$('#tt').datagrid('selectRow',index);
+			$('#tt').datagrid('beginEdit',index);
+        }
+
+        function gete() {
+                var facturas = {
+                    lineas: []
+                };
+
+                linea_facturas = "";
+                //Armado del arreglo JSON a enviar
+                rows = $('#tt').datagrid('getRows');  // get all rows of Datagrid
+                for (var i = 0; i < rows.length; i++) {
+                    var renglon = rows[i];
+                    facturas.lineas.push({
+                        "Idc1116aDetalle": renglon.Idc1116aDetalle,
+                        "Idc1116a": renglon.Idc1116a,
+                        "NumeroCartaDePorte": renglon.NumeroCartaDePorte,
+                        "NumeroCertificadoAsociado": renglon.NumeroCertificadoAsociado,
+                        "KgBrutos": renglon.KgBrutos,
+                        "FechaRemesa": renglon.FechaRemesa 
+                    });
+                    linea_facturas =
+                     linea_facturas +
+                     renglon.Idc1116aDetalle + "," +
+                     renglon.Idc1116a + "," +
+                     renglon.NumeroCartaDePorte + "," +
+                     renglon.NumeroCertificadoAsociado + "," +
+                     renglon.KgBrutos + "," +
+                     renglon.FechaRemesa + "&";
+                }
+
+
+                var jsonText = JSON.stringify(facturas); //Convierte un valor de JavaScript en una cadena de la notación de objetos JavaScript (JSON).
+                //$.messager.alert('Info',linea_facturas);
+                //window.console.log(linea_facturas);
+
+                var jqxhr = $.post("../../setC1116ADetalle.ashx?q=" + jsonText)
+                jqxhr.done(function(data) {
+                    var content = $(data).find("#content");
+                    alert("pepe: " + JSON.stringify(content));
+                }); 
+                
+                /*
+                $.ajax({
+                    type: "POST",
+                    url: "../../setC1116ADetalle.ashx",
+                    data: { q: linea_facturas },
+                    dataType: "json",
+                    success: function(jsondata) {
+                        //$.messager.alert("Almacenado de detalles exitoso y se insertaron  " + jsondata.detalle + " registros");
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    },
+                    complete: function() { }
+                }); 
+                */
+        }
+
+    </script>
+</head>
+<body>
+	<h2></h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip">&nbsp;</div>
+		<div></div>
+	</div>
+	
+	<div style="margin:10px 0">
+		<a href="#" class="easyui-linkbutton" onclick="insert()">Agregar Carta de Porte</a>
+		<a href="#" class="easyui-linkbutton" onclick="gete()">get</a>
+	</div>
+	
+	<table id="tt"></table>
+	
+</body>
+</html>

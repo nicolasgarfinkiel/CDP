@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>CartaDePorte.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{dc88a3be-bb44-49b8-a9c2-372d573fd3d8}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>CartaDePorte.Database</RootNamespace>
+    <AssemblyName>CartaDePorte.Database</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Scripts" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Functions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\logsolicitudes.sql" />
+    <Build Include="dbo\Tables\SolicitudesRecibidas.sql" />
+    <Build Include="dbo\Tables\Cosecha.sql" />
+    <Build Include="dbo\Tables\Especie.sql" />
+    <Build Include="dbo\Tables\LogSap.sql" />
+    <Build Include="dbo\Tables\Provincia.sql" />
+    <Build Include="dbo\Tables\Localidad.sql" />
+    <Build Include="dbo\Tables\Chofer.sql" />
+    <Build Include="dbo\Tables\TipoDocumentoSAP.sql" />
+    <Build Include="dbo\Tables\CartasDePorte.sql" />
+    <Build Include="dbo\Tables\TipoGrano.sql" />
+    <Build Include="dbo\Tables\TipoDeCarta.sql" />
+    <Build Include="dbo\Tables\Grano.sql" />
+    <Build Include="dbo\Tables\AfipAuth.sql" />
+    <Build Include="dbo\Tables\Establecimiento.sql" />
+    <Build Include="dbo\Tables\TipoEspecie.sql" />
+    <Build Include="dbo\Tables\Proveedor.sql" />
+    <Build Include="dbo\Tables\LoteCartasDePorte.sql" />
+    <Build Include="dbo\Tables\tmpAcreedor.sql" />
+    <Build Include="dbo\Tables\logInterfaz.sql" />
+    <Build Include="dbo\Tables\Empresa.sql" />
+    <Build Include="dbo\Tables\sol2tmp.sql" />
+    <Build Include="dbo\Tables\Solicitudes.sql" />
+    <Build Include="dbo\Tables\Cliente.sql" />
+    <Build Include="Security\UsrAppCartadePorte.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarUpdateProveedorProspecto.sql" />
+    <Build Include="dbo\Stored Procedures\getIdClienteProspecto.sql" />
+    <Build Include="dbo\Stored Procedures\getIdSapProveedorProspecto.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedorByNumeroDocumento.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteByCuit.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudByCDP.sql" />
+    <Build Include="dbo\Stored Procedures\GetCambiosEstados.sql" />
+    <Build Include="dbo\Stored Procedures\GetLoteCartasDePorteReporte.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedorBySAPID.sql" />
+    <Build Include="dbo\Stored Procedures\GetChoferByCuit.sql" />
+    <Build Include="dbo\Stored Procedures\GetCuitAutoComplete.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudAnulacionSAP.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudRecibida.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudTop.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudRecibidaFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporteRecibidas.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarSolicitudRecibida.sql" />
+    <Build Include="dbo\Stored Procedures\CantidadCartasDePorteDisponibles.sql" />
+    <Build Include="dbo\Stored Procedures\GetLocalidadByFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetLocalidadByText.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarLogSap.sql" />
+    <Build Include="dbo\Stored Procedures\GetLogSap.sql" />
+    <Build Include="dbo\Stored Procedures\GetLogSapUltimoNroEnvio.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarChofer.sql" />
+    <Build Include="dbo\Stored Procedures\GetChofer.sql" />
+    <Build Include="dbo\Stored Procedures\GetCosecha.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarChofer.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarGrano.sql" />
+    <Build Include="dbo\Stored Procedures\GetEspecie.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarEstablecimiento.sql" />
+    <Build Include="dbo\Stored Procedures\GetGrano.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarGrano.sql" />
+    <Build Include="dbo\Stored Procedures\GetLocalidadByIDProvincia.sql" />
+    <Build Include="dbo\Stored Procedures\GetProvincia.sql" />
+    <Build Include="dbo\Stored Procedures\GetTipoDocumentoSAP.sql" />
+    <Build Include="dbo\Stored Procedures\GetLoteCartasDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GetDisponiblePorLote.sql" />
+    <Build Include="dbo\Stored Procedures\GetTipoDeCarta.sql" />
+    <Build Include="dbo\Stored Procedures\ReservaCartaDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GetTipoGrano.sql" />
+    <Build Include="dbo\Stored Procedures\GetMisReservas.sql" />
+    <Build Include="dbo\Stored Procedures\CancelarReservaCartaDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudByCTG.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaByIDCliente.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarEstablecimiento.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudTopConfirmacion.sql" />
+    <Build Include="dbo\Stored Procedures\GetLocalidad.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudFiltroConfirmacion.sql" />
+    <Build Include="dbo\Stored Procedures\GetEstablecimiento.sql" />
+    <Build Include="dbo\Stored Procedures\GetOneByCodigo.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarEspecie.sql" />
+    <Build Include="dbo\Stored Procedures\GetCosechaByCodigo.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarAfipAuth.sql" />
+    <Build Include="dbo\Stored Procedures\GetAfipAuth.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarCosecha.sql" />
+    <Build Include="dbo\Stored Procedures\GetCartaDePorteDisponible.sql" />
+    <Build Include="dbo\Stored Procedures\GetChoferFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetGranoFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresa.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedorTitularCartaDePorteUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaBySap_Id.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedor.sql" />
+    <Build Include="dbo\Stored Procedures\GetCliente.sql" />
+    <Build Include="dbo\Stored Procedures\GetEstablecimientoFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetEstablecimientoOrigenDestino.sql" />
+    <Build Include="dbo\Stored Procedures\GetClientePagadorDelFleteUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedorFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarSolicitud.sql" />
+    <Build Include="dbo\Stored Procedures\AnularReservaCartaDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitud.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteRemitenteComercialUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporte.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporteEmitidas.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarCliente.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarEmpresa.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarProveedor.sql" />
+    <Build Include="dbo\Stored Procedures\GetCartasDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarCartasDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarEstadoCartaDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\Eliminar1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporte1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GetSox1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GetSox1116AByIdSolicitud.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarSox1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaTitularCartaDePorteUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporteGrafico.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteIntermediarioUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudReporteGraficoNotIn.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteCorredorUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteEntregadorUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteDestinatarioUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteDestinoUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetProveedorTransportistaUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetChoferUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaRemitenteComercialUsadas.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudEnvioSAP.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarUpdateClienteProspecto.sql" />
+    <Build Include="dbo\Tables\CartaDePorte1116A.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteC1116ADetalle.sql" />
+    <Build Include="dbo\Stored Procedures\GetC1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GetC1116AByCertificado.sql" />
+    <Build Include="dbo\Stored Procedures\GetC1116AByFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetC1116ADetalle.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarC1116A.sql" />
+    <Build Include="dbo\Stored Procedures\GuardarC1116ADetalle.sql" />
+    <Build Include="dbo\Tables\c1116a.sql" />
+    <Build Include="dbo\Tables\c1116aDetalle.sql" />
+    <Build Include="dbo\Tables\Partido.sql" />
+    <None Include="Scripts\DeltaDeploy.sql" />
+    <Build Include="dbo\Stored Procedures\GetPartido.sql" />
+    <Build Include="dbo\Stored Procedures\GetPartidoByFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetPartidoByIDProvincia.sql" />
+    <Build Include="dbo\Stored Procedures\GetPartidoByText.sql" />
+    <Build Include="dbo\Tables\zzz.AdminEmpresa.sql" />
+    <Build Include="dbo\Tables\GrupoEmpresa.sql" />
+    <Build Include="dbo\Tables\Pais.sql" />
+    <Build Include="dbo\Views\vCosecha.sql" />
+    <Build Include="dbo\Views\vEspecie.sql" />
+    <Build Include="dbo\Functions\ID_GRUPO_CRESUD.sql" />
+    <Build Include="dbo\Stored Procedures\GetEmpresaAdmin.sql" />
+    <Build Include="dbo\Stored Procedures\GetSolicitudMeFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarCartasDePorteDisponibles.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarCartasDePorte.sql" />
+    <Build Include="dbo\Stored Procedures\GetLoteCartasDePorteFiltro.sql" />
+    <Build Include="dbo\Stored Procedures\GetUtilizadoPorLote.sql" />
+    <Build Include="dbo\Tables\LogOperaciones.sql" />
+    <None Include="Scripts\DeltaDeploy CDP2.sql" />
+    <Build Include="dbo\Stored Procedures\GetClienteBySAPID.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\PostDeploy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CartaDePorte.Database.SQL2008R2STD.publish.xml" />
+    <None Include="CartaDePorte.Database.SQL2012STD.publish.xml" />
+    <None Include="CartaDePorte.Database.PC-WIN2K3-001.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="CartaDePorte.Database.refactorlog" />
+  </ItemGroup>
+</Project>

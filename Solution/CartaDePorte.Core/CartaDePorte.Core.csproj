@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{60A378D3-E2FB-4F45-B297-B324B45FD80D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CartaDePorte.Core</RootNamespace>
+    <AssemblyName>CartaDePorte.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.3.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\itextsharp\External References\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp.xtra, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL" />
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Common\ConfiguracionRegional.cs" />
+    <Compile Include="Common\Tools.cs" />
+    <Compile Include="Configuration\ConfigurationHelper.cs" />
+    <Compile Include="Configuration\ConfigurationSectionManager.cs" />
+    <Compile Include="Configuration\XmlSectionWriter.cs" />
+    <Compile Include="CronTasks\CronTaskConfig.cs" />
+    <Compile Include="CronTasks\CronTaskConfigSection.cs" />
+    <Compile Include="CronTasks\CronTasksService.cs" />
+    <Compile Include="CronTasks\ICronTask.cs" />
+    <Compile Include="CronTasks\TaskConsultaDeEstadosAFIP.cs" />
+    <Compile Include="CronTasks\TaskActualizarDesdeAFIP.cs" />
+    <Compile Include="CronTasks\TaskRenovarTokenAfip.cs" />
+    <Compile Include="CronTasks\TaskPrefacturaSAP.cs" />
+    <Compile Include="CronTasks\TaskFoo.cs" />
+    <Compile Include="DAO\AfipAuthDAO.cs" />
+    <Compile Include="DAO\BaseDAO.cs" />
+    <Compile Include="DAO\CargaMasivaDAO.cs" />
+    <Compile Include="DAO\CartaDePorteDAO.cs" />
+    <Compile Include="DAO\RemitoParaguayDAO.cs" />
+    <Compile Include="DAO\ChoferDAO.cs" />
+    <Compile Include="DAO\ClienteDAO.cs" />
+    <Compile Include="DAO\C1116ADAO.cs" />
+    <Compile Include="DAO\PaisDAO.cs" />
+    <Compile Include="DAO\GrupoEmpresaDAO.cs" />
+    <Compile Include="DAO\PartidoDAO.cs" />
+    <Compile Include="DAO\ReporteLoteCDPDAO.cs" />
+    <Compile Include="DAO\SolicitudMeDAO.cs" />
+    <Compile Include="DAO\SolicitudRecibidaDAO.cs" />
+    <Compile Include="DAO\EnvioMailDAO.cs" />
+    <Compile Include="DAO\Sox1116ADAO.cs" />
+    <Compile Include="DAO\CosechaDAO.cs" />
+    <Compile Include="DAO\EmpresaDAO.cs" />
+    <Compile Include="DAO\EspecieDAO.cs" />
+    <Compile Include="DAO\EstablecimientoDAO.cs" />
+    <Compile Include="DAO\GranoDAO.cs" />
+    <Compile Include="DAO\LocalidadDAO.cs" />
+    <Compile Include="DAO\LogSapDAO.cs" />
+    <Compile Include="DAO\LoteCartasDePorteDAO.cs" />
+    <Compile Include="DAO\ProveedorDAO.cs" />
+    <Compile Include="DAO\ProvinciaDAO.cs" />
+    <Compile Include="DAO\SolicitudDAO.cs" />
+    <Compile Include="DAO\SQLHelper.cs" />
+    <Compile Include="DAO\TipoDeCartaDAO.cs" />
+    <Compile Include="DAO\TipoDocumentoSAPDAO.cs" />
+    <Compile Include="DAO\TipoGranoDAO.cs" />
+    <Compile Include="Domain\AfipAuth.cs" />
+    <Compile Include="Domain\CartasDePorte.cs" />
+    <Compile Include="Domain\Chofer.cs" />
+    <Compile Include="Domain\Cliente.cs" />
+    <Compile Include="Domain\C1116A.cs" />
+    <Compile Include="Domain\C1116ADetalle.cs" />
+    <Compile Include="Domain\Email.cs" />
+    <Compile Include="Domain\Pais.cs" />
+    <Compile Include="Domain\GrupoEmpresa.cs" />
+    <Compile Include="Domain\Partido.cs" />
+    <Compile Include="Domain\SolicitudRecibida.cs" />
+    <Compile Include="Domain\Sox1116A.cs" />
+    <Compile Include="Domain\Cosecha.cs" />
+    <Compile Include="Domain\Empresa.cs" />
+    <Compile Include="Domain\Enums.cs" />
+    <Compile Include="Domain\Especie.cs" />
+    <Compile Include="Domain\Establecimiento.cs" />
+    <Compile Include="Domain\Grano.cs" />
+    <Compile Include="Domain\Localidad.cs" />
+    <Compile Include="Domain\LogSap.cs" />
+    <Compile Include="Domain\LoteCartasDePorte.cs" />
+    <Compile Include="Domain\Proveedor.cs" />
+    <Compile Include="Domain\Provincia.cs" />
+    <Compile Include="Domain\Seguridad\SeguridadUsuario.cs" />
+    <Compile Include="Domain\Solicitud.cs" />
+    <Compile Include="Domain\TipoDeCarta.cs" />
+    <Compile Include="Domain\TipoDocumentoSAP.cs" />
+    <Compile Include="Domain\TipoGrano.cs" />
+    <Compile Include="Exception\AbstractException.cs" />
+    <Compile Include="Exception\BusinessException.cs" />
+    <Compile Include="Exception\ExceptionFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\wsAfip_v3.cs" />
+    <Compile Include="Servicios\wsAfip_v3Homo.cs" />
+    <Compile Include="Servicios\wsSAP.cs" />
+    <Compile Include="Utilidades\DrawingCDP.cs" />
+    <Compile Include="Utilidades\PdfCdpOld.cs" />
+    <Compile Include="Utilidades\PdfCdp.cs" />
+    <Compile Include="Utilidades\Utils.cs" />
+    <Compile Include="Web References\CTGService_v3\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Wsaa\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsFrameworkSeguridad\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\wsSAPPrefacturas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://serviciosjava.afip.gob.ar/wsctg/services/CTGService_v3.0%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CTGService_v3\</RelPath>
+      <UpdateFromURL>https://serviciosjava.afip.gob.ar/wsctg/services/CTGService_v3.0%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CartaDePorte_Core_CTGService_v3_CTGService_v3_0</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="M:\2014\proyectos\CartaDePorte\CartaDePorte.Core\_libs\LoginCms.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Wsaa\</RelPath>
+      <UpdateFromURL>M:\2014\proyectos\CartaDePorte\CartaDePorte.Core\_libs\LoginCms.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CartaDePorte_Core_Wsaa_LoginCMSService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="M:\2014\proyectos\CartaDePorte\CartaDePorte.Core\_libs\re_prefacturas_out_async_MI_V2.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsSAPPrefacturas\</RelPath>
+      <UpdateFromURL>M:\2014\proyectos\CartaDePorte\CartaDePorte.Core\_libs\re_prefacturas_out_async_MI_V2.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CartaDePorte_Core_wsSAPPrefacturas_re_prefacturas_out_async_MIService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsFrameworkSeguridad\</RelPath>
+      <UpdateFromURL>http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CartaDePorte_Core_wsFrameworkSeguridad_SecurityProvider</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CTGService_v3\confirmarDefinitivoReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarConstanciaCTGPDFReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarCosechasReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarCTGActivosPorPatenteReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarCTGExcelReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarCTGRechazadosReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarCTGReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarDetalleCTGReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarEspeciesReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarEstablecimientosReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarLocalidadesPorProvinciaReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\consultarProvinciasReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\CTGService_v2.wsdl" />
+    <None Include="Web References\CTGService_v3\CTGsPendientesResolucionReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\dummyResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\operacionCTGReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CTGService_v3\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CTGService_v3\solicitarCTGReturnType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Wsaa\LoginCms.wsdl" />
+    <None Include="Web References\Wsaa\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\SecurityProvider.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\wsFrameworkSeguridad\Application.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\Delegation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\Group.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\GroupPermission.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\Permission.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\PermissionParam.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\PermissionValue.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsFrameworkSeguridad\SecurityProvider.disco" />
+    <None Include="Web References\wsFrameworkSeguridad\User.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\wsSAPPrefacturas\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsSAPPrefacturas\re_prefacturas_out_async_MI.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_libs\itextsharp.dll" />
+    <Content Include="_libs\itextsharp.pdfa.dll" />
+    <Content Include="_libs\iTextSharp.xml" />
+    <Content Include="_libs\itextsharp.xtra.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

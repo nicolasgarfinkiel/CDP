@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="dsCartaDePorte">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=.\SQL2008R2STD;Initial Catalog=CartaDePorte.Database</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>8b9b0df2-2d28-4127-8a02-ba55e3e1ab2a</DataSourceID>
+</RptDataSource>

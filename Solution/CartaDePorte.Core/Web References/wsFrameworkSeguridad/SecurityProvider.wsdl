@@ -1,0 +1,2790 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://framework.irsa.com.ar/WebServices/Security/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://framework.irsa.com.ar/WebServices/Security/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio centralizador de seguridad para aplicaciones.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://framework.irsa.com.ar/WebServices/Security/">
+      <s:element name="ApplicationGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplicationGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationGetItemResult" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Application">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ApplicationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="application" type="tns:Application" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ApplicationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationListResult" type="tns:ArrayOfApplication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfApplication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Application" nillable="true" type="tns:Application" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserGetItemResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Online" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdLanguage" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserListPerGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Group">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdApplication" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserListPerGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListPerGroupResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListPerPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Permission">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdApplication" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserListPerPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListPerPermissionResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListPerParameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permissionvalue" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PermissionValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:PermissionParam">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IdGroup" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PermissionParam">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPermission" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdApplication" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserListPerParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListPerParameterResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserIsInRoleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserLogonResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogonByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ntUserName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogonByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserLogonByNameResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogoff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserLogoffResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UserCheckPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserCheckPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserCheckPermissionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserCheckParameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+            <s:element minOccurs="0" maxOccurs="1" name="parameter" type="tns:KeyValueItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KeyValueItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserCheckParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserCheckParameterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersEmailByRol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rol" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdApplication" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersEmailByRolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersEmailByRolResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PermissionGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionGetItemResult" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionListResult" type="tns:ArrayOfPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Permission" nillable="true" type="tns:Permission" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PermissionListPerGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionListPerGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionListPerGroupResult" type="tns:ArrayOfPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionSetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionSetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionSetItemResult" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PermissionParamGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perm" type="tns:Permission" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionParamGetItemResult" type="tns:PermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamListPerPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamListPerPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionParamListPerPermissionResult" type="tns:ArrayOfPermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPermissionParam">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermissionParam" nillable="true" type="tns:PermissionParam" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PermissionParamList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:PermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionParamListResult" type="tns:ArrayOfPermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamSetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parameter" type="tns:PermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamSetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionParamSetItemResult" type="tns:PermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamSetItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perparams" type="tns:ArrayOfPermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamSetItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionParamSetItemsResult" type="tns:ArrayOfPermissionParam" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perm" type="tns:Permission" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionParamRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PermissionValueGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perm" type="tns:Permission" />
+            <s:element minOccurs="0" maxOccurs="1" name="group" type="tns:Group" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionValueGetItemResult" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionValueListResult" type="tns:ArrayOfPermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPermissionValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermissionValue" nillable="true" type="tns:PermissionValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PermissionValueSetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pervalue" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueSetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionValueSetItemResult" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueSetItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="values" type="tns:ArrayOfPermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueSetItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PermissionValueSetItemsResult" type="tns:ArrayOfPermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="perm" type="tns:Permission" />
+            <s:element minOccurs="0" maxOccurs="1" name="group" type="tns:Group" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PermissionValueRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="List">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:PermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListResult" type="tns:ArrayOfPermissionValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupGetItemResult" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupListResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Group" nillable="true" type="tns:Group" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupsListPerPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupsListPerPermissionResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupsListPerUserResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserAllApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserAllAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupsListPerUserAllAppResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupPermissionSetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="permission" type="tns:GroupPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GroupPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="tns:Group" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permission" type="tns:Permission" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GroupPermissionSetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupPermissionSetItemResult" type="tns:GroupPermission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupPermissionRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="group" type="tns:Group" />
+            <s:element minOccurs="0" maxOccurs="1" name="perm" type="tns:Permission" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupPermissionRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DelegationSetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delegation" type="tns:Delegation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Delegation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserGroup" type="tns:UserGroup" />
+          <s:element minOccurs="0" maxOccurs="1" name="DelegateUser" type="tns:User" />
+          <s:element minOccurs="1" maxOccurs="1" name="SinceDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+          <s:element minOccurs="0" maxOccurs="1" name="Group" type="tns:Group" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DelegationSetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelegationSetItemResult" type="tns:Delegation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelegationGetItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelegationGetItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelegationGetItemResult" type="tns:Delegation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelegationRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delegation" type="tns:Delegation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelegationRemoveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DelegationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="tns:Delegation" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelegationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DelegationListResult" type="tns:ArrayOfDelegation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDelegation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Delegation" nillable="true" type="tns:Delegation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UserListPerGroupOnlyDelegateToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListPerGroupOnlyDelegateTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListPerGroupOnlyDelegateTodayResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListPerGroupOnlyDelegate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserListPerGroupOnlyDelegateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserListPerGroupOnlyDelegateResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInDelegateRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInDelegateRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserIsInDelegateRoleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInDelegateRoleToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserIsInDelegateRoleTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserIsInDelegateRoleTodayResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserOnlyDelegate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserOnlyDelegateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupsListPerUserOnlyDelegateResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserOnlyDelegateToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GroupsListPerUserOnlyDelegateTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GroupsListPerUserOnlyDelegateTodayResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUserListPerGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUserListPerGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllUserListPerGroupResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUserListPerGroupAtDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllUserListPerGroupAtDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllUserListPerGroupAtDateResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserInRol">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserInRolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsUserInRolResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserInRolAtDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="0" maxOccurs="1" name="grupo" type="tns:Group" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserInRolAtDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsUserInRolAtDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllGroupsListPerUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllGroupsListPerUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllGroupsListPerUserResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllGroupsListPerUserAtDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="idApplication" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllGroupsListPerUserAtDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllGroupsListPerUserAtDateResult" type="tns:ArrayOfGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Application" nillable="true" type="tns:Application" />
+      <s:element name="User" nillable="true" type="tns:User" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="Permission" nillable="true" type="tns:Permission" />
+      <s:element name="Group" nillable="true" type="tns:Group" />
+      <s:element name="Delegation" nillable="true" type="tns:Delegation" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ApplicationGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplicationGetItem" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplicationGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationListSoapIn">
+    <wsdl:part name="parameters" element="tns:ApplicationList" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationListSoapOut">
+    <wsdl:part name="parameters" element="tns:ApplicationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:UserGetItem" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:UserGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListSoapIn">
+    <wsdl:part name="parameters" element="tns:UserList" />
+  </wsdl:message>
+  <wsdl:message name="UserListSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:UserListPerGroup" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListPerGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:UserListPerPermission" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListPerPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:UserListPerParameter" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListPerParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:UserIsInRole" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:UserIsInRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonSoapIn">
+    <wsdl:part name="parameters" element="tns:UserLogon" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonSoapOut">
+    <wsdl:part name="parameters" element="tns:UserLogonResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:UserLogonByName" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:UserLogonByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffSoapIn">
+    <wsdl:part name="parameters" element="tns:UserLogoff" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffSoapOut">
+    <wsdl:part name="parameters" element="tns:UserLogoffResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserCheckPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:UserCheckPermission" />
+  </wsdl:message>
+  <wsdl:message name="UserCheckPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:UserCheckPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserCheckParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:UserCheckParameter" />
+  </wsdl:message>
+  <wsdl:message name="UserCheckParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:UserCheckParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersEmailByRolSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersEmailByRol" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersEmailByRolSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersEmailByRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionGetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionListSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionList" />
+  </wsdl:message>
+  <wsdl:message name="PermissionListSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionListPerGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionListPerGroup" />
+  </wsdl:message>
+  <wsdl:message name="PermissionListPerGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionListPerGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionSetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionSetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionSetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionSetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionRemove" />
+  </wsdl:message>
+  <wsdl:message name="PermissionRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamGetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamListPerPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamListPerPermission" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamListPerPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamListPerPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamListSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamList" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamListSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamSetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamSetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamSetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamSetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamSetItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamSetItems" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamSetItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamSetItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionParamRemove" />
+  </wsdl:message>
+  <wsdl:message name="PermissionParamRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionParamRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionValueGetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionValueGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueListSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionValueList" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueListSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionValueListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueSetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionValueSetItem" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueSetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionValueSetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueSetItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionValueSetItems" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueSetItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionValueSetItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:PermissionValueRemove" />
+  </wsdl:message>
+  <wsdl:message name="PermissionValueRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:PermissionValueRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListSoapIn">
+    <wsdl:part name="parameters" element="tns:List" />
+  </wsdl:message>
+  <wsdl:message name="ListSoapOut">
+    <wsdl:part name="parameters" element="tns:ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupGetItem" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupList" />
+  </wsdl:message>
+  <wsdl:message name="GroupListSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerPermissionSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupsListPerPermission" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerPermissionSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupsListPerPermissionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUser" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserAllAppSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserAllApp" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserAllAppSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserAllAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupPermissionSetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupPermissionSetItem" />
+  </wsdl:message>
+  <wsdl:message name="GroupPermissionSetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupPermissionSetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupPermissionRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupPermissionRemove" />
+  </wsdl:message>
+  <wsdl:message name="GroupPermissionRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupPermissionRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelegationSetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:DelegationSetItem" />
+  </wsdl:message>
+  <wsdl:message name="DelegationSetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:DelegationSetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemSoapIn">
+    <wsdl:part name="parameters" element="tns:DelegationGetItem" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemSoapOut">
+    <wsdl:part name="parameters" element="tns:DelegationGetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelegationRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:DelegationRemove" />
+  </wsdl:message>
+  <wsdl:message name="DelegationRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:DelegationRemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelegationListSoapIn">
+    <wsdl:part name="parameters" element="tns:DelegationList" />
+  </wsdl:message>
+  <wsdl:message name="DelegationListSoapOut">
+    <wsdl:part name="parameters" element="tns:DelegationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupOnlyDelegateTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:UserListPerGroupOnlyDelegateToday" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupOnlyDelegateTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:UserListPerGroupOnlyDelegateTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupOnlyDelegateSoapIn">
+    <wsdl:part name="parameters" element="tns:UserListPerGroupOnlyDelegate" />
+  </wsdl:message>
+  <wsdl:message name="UserListPerGroupOnlyDelegateSoapOut">
+    <wsdl:part name="parameters" element="tns:UserListPerGroupOnlyDelegateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInDelegateRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:UserIsInDelegateRole" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInDelegateRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:UserIsInDelegateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInDelegateRoleTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:UserIsInDelegateRoleToday" />
+  </wsdl:message>
+  <wsdl:message name="UserIsInDelegateRoleTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:UserIsInDelegateRoleTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserOnlyDelegateSoapIn">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserOnlyDelegate" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserOnlyDelegateSoapOut">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserOnlyDelegateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserOnlyDelegateTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserOnlyDelegateToday" />
+  </wsdl:message>
+  <wsdl:message name="GroupsListPerUserOnlyDelegateTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:GroupsListPerUserOnlyDelegateTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllUserListPerGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:AllUserListPerGroup" />
+  </wsdl:message>
+  <wsdl:message name="AllUserListPerGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:AllUserListPerGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllUserListPerGroupAtDateSoapIn">
+    <wsdl:part name="parameters" element="tns:AllUserListPerGroupAtDate" />
+  </wsdl:message>
+  <wsdl:message name="AllUserListPerGroupAtDateSoapOut">
+    <wsdl:part name="parameters" element="tns:AllUserListPerGroupAtDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsUserInRolSoapIn">
+    <wsdl:part name="parameters" element="tns:IsUserInRol" />
+  </wsdl:message>
+  <wsdl:message name="IsUserInRolSoapOut">
+    <wsdl:part name="parameters" element="tns:IsUserInRolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsUserInRolAtDateSoapIn">
+    <wsdl:part name="parameters" element="tns:IsUserInRolAtDate" />
+  </wsdl:message>
+  <wsdl:message name="IsUserInRolAtDateSoapOut">
+    <wsdl:part name="parameters" element="tns:IsUserInRolAtDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllGroupsListPerUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AllGroupsListPerUser" />
+  </wsdl:message>
+  <wsdl:message name="AllGroupsListPerUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AllGroupsListPerUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllGroupsListPerUserAtDateSoapIn">
+    <wsdl:part name="parameters" element="tns:AllGroupsListPerUserAtDate" />
+  </wsdl:message>
+  <wsdl:message name="AllGroupsListPerUserAtDateSoapOut">
+    <wsdl:part name="parameters" element="tns:AllGroupsListPerUserAtDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationGetItemHttpGetIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationGetItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonHttpGetIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonHttpGetOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameHttpGetIn">
+    <wsdl:part name="ntUserName" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffHttpGetIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffHttpGetOut" />
+  <wsdl:message name="GetUsersEmailByRolHttpGetIn">
+    <wsdl:part name="rol" type="s:string" />
+    <wsdl:part name="IdApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersEmailByRolHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:Permission" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:Group" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemHttpGetOut">
+    <wsdl:part name="Body" element="tns:Delegation" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationGetItemHttpPostIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ApplicationGetItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:Application" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserGetItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonHttpPostIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonHttpPostOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameHttpPostIn">
+    <wsdl:part name="ntUserName" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogonByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:User" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffHttpPostIn">
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UserLogoffHttpPostOut" />
+  <wsdl:message name="GetUsersEmailByRolHttpPostIn">
+    <wsdl:part name="rol" type="s:string" />
+    <wsdl:part name="IdApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersEmailByRolHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PermissionGetItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:Permission" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GroupGetItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:Group" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="idApplication" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DelegationGetItemHttpPostOut">
+    <wsdl:part name="Body" element="tns:Delegation" />
+  </wsdl:message>
+  <wsdl:portType name="SecurityProviderSoap">
+    <wsdl:operation name="ApplicationGetItem">
+      <wsdl:input message="tns:ApplicationGetItemSoapIn" />
+      <wsdl:output message="tns:ApplicationGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationList">
+      <wsdl:input message="tns:ApplicationListSoapIn" />
+      <wsdl:output message="tns:ApplicationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <wsdl:input message="tns:UserGetItemSoapIn" />
+      <wsdl:output message="tns:UserGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <wsdl:input message="tns:UserListSoapIn" />
+      <wsdl:output message="tns:UserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroup">
+      <wsdl:input message="tns:UserListPerGroupSoapIn" />
+      <wsdl:output message="tns:UserListPerGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerPermission">
+      <wsdl:input message="tns:UserListPerPermissionSoapIn" />
+      <wsdl:output message="tns:UserListPerPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerParameter">
+      <wsdl:input message="tns:UserListPerParameterSoapIn" />
+      <wsdl:output message="tns:UserListPerParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInRole">
+      <wsdl:input message="tns:UserIsInRoleSoapIn" />
+      <wsdl:output message="tns:UserIsInRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <wsdl:input message="tns:UserLogonSoapIn" />
+      <wsdl:output message="tns:UserLogonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <wsdl:input message="tns:UserLogonByNameSoapIn" />
+      <wsdl:output message="tns:UserLogonByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <wsdl:input message="tns:UserLogoffSoapIn" />
+      <wsdl:output message="tns:UserLogoffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckPermission">
+      <wsdl:input message="tns:UserCheckPermissionSoapIn" />
+      <wsdl:output message="tns:UserCheckPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckParameter">
+      <wsdl:input message="tns:UserCheckParameterSoapIn" />
+      <wsdl:output message="tns:UserCheckParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <wsdl:input message="tns:GetUsersEmailByRolSoapIn" />
+      <wsdl:output message="tns:GetUsersEmailByRolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <wsdl:input message="tns:PermissionGetItemSoapIn" />
+      <wsdl:output message="tns:PermissionGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionList">
+      <wsdl:input message="tns:PermissionListSoapIn" />
+      <wsdl:output message="tns:PermissionListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionListPerGroup">
+      <wsdl:input message="tns:PermissionListPerGroupSoapIn" />
+      <wsdl:output message="tns:PermissionListPerGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionSetItem">
+      <wsdl:input message="tns:PermissionSetItemSoapIn" />
+      <wsdl:output message="tns:PermissionSetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionRemove">
+      <wsdl:input message="tns:PermissionRemoveSoapIn" />
+      <wsdl:output message="tns:PermissionRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamGetItem">
+      <wsdl:input message="tns:PermissionParamGetItemSoapIn" />
+      <wsdl:output message="tns:PermissionParamGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamListPerPermission">
+      <wsdl:input message="tns:PermissionParamListPerPermissionSoapIn" />
+      <wsdl:output message="tns:PermissionParamListPerPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamList">
+      <wsdl:input message="tns:PermissionParamListSoapIn" />
+      <wsdl:output message="tns:PermissionParamListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItem">
+      <wsdl:input message="tns:PermissionParamSetItemSoapIn" />
+      <wsdl:output message="tns:PermissionParamSetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItems">
+      <wsdl:input message="tns:PermissionParamSetItemsSoapIn" />
+      <wsdl:output message="tns:PermissionParamSetItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamRemove">
+      <wsdl:input message="tns:PermissionParamRemoveSoapIn" />
+      <wsdl:output message="tns:PermissionParamRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueGetItem">
+      <wsdl:input message="tns:PermissionValueGetItemSoapIn" />
+      <wsdl:output message="tns:PermissionValueGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueList">
+      <wsdl:input message="tns:PermissionValueListSoapIn" />
+      <wsdl:output message="tns:PermissionValueListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItem">
+      <wsdl:input message="tns:PermissionValueSetItemSoapIn" />
+      <wsdl:output message="tns:PermissionValueSetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItems">
+      <wsdl:input message="tns:PermissionValueSetItemsSoapIn" />
+      <wsdl:output message="tns:PermissionValueSetItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueRemove">
+      <wsdl:input message="tns:PermissionValueRemoveSoapIn" />
+      <wsdl:output message="tns:PermissionValueRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="List">
+      <wsdl:input message="tns:ListSoapIn" />
+      <wsdl:output message="tns:ListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <wsdl:input message="tns:GroupGetItemSoapIn" />
+      <wsdl:output message="tns:GroupGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <wsdl:input message="tns:GroupListSoapIn" />
+      <wsdl:output message="tns:GroupListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerPermission">
+      <wsdl:input message="tns:GroupsListPerPermissionSoapIn" />
+      <wsdl:output message="tns:GroupsListPerPermissionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUser">
+      <wsdl:input message="tns:GroupsListPerUserSoapIn" />
+      <wsdl:output message="tns:GroupsListPerUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserAllApp">
+      <wsdl:input message="tns:GroupsListPerUserAllAppSoapIn" />
+      <wsdl:output message="tns:GroupsListPerUserAllAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionSetItem">
+      <wsdl:input message="tns:GroupPermissionSetItemSoapIn" />
+      <wsdl:output message="tns:GroupPermissionSetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionRemove">
+      <wsdl:input message="tns:GroupPermissionRemoveSoapIn" />
+      <wsdl:output message="tns:GroupPermissionRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationSetItem">
+      <wsdl:input message="tns:DelegationSetItemSoapIn" />
+      <wsdl:output message="tns:DelegationSetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <wsdl:input message="tns:DelegationGetItemSoapIn" />
+      <wsdl:output message="tns:DelegationGetItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationRemove">
+      <wsdl:input message="tns:DelegationRemoveSoapIn" />
+      <wsdl:output message="tns:DelegationRemoveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationList">
+      <wsdl:input message="tns:DelegationListSoapIn" />
+      <wsdl:output message="tns:DelegationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegateToday">
+      <wsdl:input message="tns:UserListPerGroupOnlyDelegateTodaySoapIn" />
+      <wsdl:output message="tns:UserListPerGroupOnlyDelegateTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegate">
+      <wsdl:input message="tns:UserListPerGroupOnlyDelegateSoapIn" />
+      <wsdl:output message="tns:UserListPerGroupOnlyDelegateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRole">
+      <wsdl:input message="tns:UserIsInDelegateRoleSoapIn" />
+      <wsdl:output message="tns:UserIsInDelegateRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRoleToday">
+      <wsdl:input message="tns:UserIsInDelegateRoleTodaySoapIn" />
+      <wsdl:output message="tns:UserIsInDelegateRoleTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegate">
+      <wsdl:input message="tns:GroupsListPerUserOnlyDelegateSoapIn" />
+      <wsdl:output message="tns:GroupsListPerUserOnlyDelegateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegateToday">
+      <wsdl:input message="tns:GroupsListPerUserOnlyDelegateTodaySoapIn" />
+      <wsdl:output message="tns:GroupsListPerUserOnlyDelegateTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroup">
+      <wsdl:input message="tns:AllUserListPerGroupSoapIn" />
+      <wsdl:output message="tns:AllUserListPerGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroupAtDate">
+      <wsdl:input message="tns:AllUserListPerGroupAtDateSoapIn" />
+      <wsdl:output message="tns:AllUserListPerGroupAtDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRol">
+      <wsdl:input message="tns:IsUserInRolSoapIn" />
+      <wsdl:output message="tns:IsUserInRolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRolAtDate">
+      <wsdl:input message="tns:IsUserInRolAtDateSoapIn" />
+      <wsdl:output message="tns:IsUserInRolAtDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUser">
+      <wsdl:input message="tns:AllGroupsListPerUserSoapIn" />
+      <wsdl:output message="tns:AllGroupsListPerUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUserAtDate">
+      <wsdl:input message="tns:AllGroupsListPerUserAtDateSoapIn" />
+      <wsdl:output message="tns:AllGroupsListPerUserAtDateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SecurityProviderHttpGet">
+    <wsdl:operation name="ApplicationGetItem">
+      <wsdl:input message="tns:ApplicationGetItemHttpGetIn" />
+      <wsdl:output message="tns:ApplicationGetItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <wsdl:input message="tns:UserGetItemHttpGetIn" />
+      <wsdl:output message="tns:UserGetItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <wsdl:input message="tns:UserLogonHttpGetIn" />
+      <wsdl:output message="tns:UserLogonHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <wsdl:input message="tns:UserLogonByNameHttpGetIn" />
+      <wsdl:output message="tns:UserLogonByNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <wsdl:input message="tns:UserLogoffHttpGetIn" />
+      <wsdl:output message="tns:UserLogoffHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <wsdl:input message="tns:GetUsersEmailByRolHttpGetIn" />
+      <wsdl:output message="tns:GetUsersEmailByRolHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <wsdl:input message="tns:PermissionGetItemHttpGetIn" />
+      <wsdl:output message="tns:PermissionGetItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <wsdl:input message="tns:GroupGetItemHttpGetIn" />
+      <wsdl:output message="tns:GroupGetItemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <wsdl:input message="tns:DelegationGetItemHttpGetIn" />
+      <wsdl:output message="tns:DelegationGetItemHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SecurityProviderHttpPost">
+    <wsdl:operation name="ApplicationGetItem">
+      <wsdl:input message="tns:ApplicationGetItemHttpPostIn" />
+      <wsdl:output message="tns:ApplicationGetItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <wsdl:input message="tns:UserGetItemHttpPostIn" />
+      <wsdl:output message="tns:UserGetItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <wsdl:input message="tns:UserLogonHttpPostIn" />
+      <wsdl:output message="tns:UserLogonHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <wsdl:input message="tns:UserLogonByNameHttpPostIn" />
+      <wsdl:output message="tns:UserLogonByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <wsdl:input message="tns:UserLogoffHttpPostIn" />
+      <wsdl:output message="tns:UserLogoffHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <wsdl:input message="tns:GetUsersEmailByRolHttpPostIn" />
+      <wsdl:output message="tns:GetUsersEmailByRolHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <wsdl:input message="tns:PermissionGetItemHttpPostIn" />
+      <wsdl:output message="tns:PermissionGetItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <wsdl:input message="tns:GroupGetItemHttpPostIn" />
+      <wsdl:output message="tns:GroupGetItemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <wsdl:input message="tns:DelegationGetItemHttpPostIn" />
+      <wsdl:output message="tns:DelegationGetItemHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecurityProviderSoap" type="tns:SecurityProviderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ApplicationGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/ApplicationGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/ApplicationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroup">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerPermission">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerParameter">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInRole">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogon" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogonByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogoff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckPermission">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserCheckPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckParameter">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserCheckParameter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GetUsersEmailByRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionListPerGroup">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionListPerGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionSetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionSetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionRemove">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamListPerPermission">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamListPerPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamSetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItems">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamSetItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamRemove">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueSetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItems">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueSetItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueRemove">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="List">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerPermission">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUser">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserAllApp">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserAllApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionSetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupPermissionSetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionRemove">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupPermissionRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationSetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationSetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationGetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationRemove">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationList">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegateToday">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroupOnlyDelegateToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegate">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroupOnlyDelegate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRole">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInDelegateRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRoleToday">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInDelegateRoleToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegate">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserOnlyDelegate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegateToday">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserOnlyDelegateToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroup">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllUserListPerGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroupAtDate">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllUserListPerGroupAtDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRol">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/IsUserInRol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRolAtDate">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/IsUserInRolAtDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUser">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllGroupsListPerUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUserAtDate">
+      <soap:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllGroupsListPerUserAtDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecurityProviderSoap12" type="tns:SecurityProviderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ApplicationGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/ApplicationGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplicationList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/ApplicationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroup">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerPermission">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerParameter">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerParameter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInRole">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogonByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserLogoff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckPermission">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserCheckPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserCheckParameter">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserCheckParameter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GetUsersEmailByRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionListPerGroup">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionListPerGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionSetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionSetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionRemove">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamListPerPermission">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamListPerPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamSetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamSetItems">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamSetItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionParamRemove">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionParamRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueSetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueSetItems">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueSetItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionValueRemove">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/PermissionValueRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="List">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/List" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerPermission">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerPermission" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUser">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserAllApp">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserAllApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionSetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupPermissionSetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupPermissionRemove">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupPermissionRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationSetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationSetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationGetItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationRemove">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationRemove" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationList">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/DelegationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegateToday">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroupOnlyDelegateToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserListPerGroupOnlyDelegate">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserListPerGroupOnlyDelegate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRole">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInDelegateRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsInDelegateRoleToday">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/UserIsInDelegateRoleToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegate">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserOnlyDelegate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupsListPerUserOnlyDelegateToday">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/GroupsListPerUserOnlyDelegateToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroup">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllUserListPerGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllUserListPerGroupAtDate">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllUserListPerGroupAtDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRol">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/IsUserInRol" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserInRolAtDate">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/IsUserInRolAtDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUser">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllGroupsListPerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllGroupsListPerUserAtDate">
+      <soap12:operation soapAction="http://framework.irsa.com.ar/WebServices/Security/AllGroupsListPerUserAtDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecurityProviderHttpGet" type="tns:SecurityProviderHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ApplicationGetItem">
+      <http:operation location="/ApplicationGetItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <http:operation location="/UserGetItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <http:operation location="/UserLogon" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <http:operation location="/UserLogonByName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <http:operation location="/UserLogoff" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <http:operation location="/GetUsersEmailByRol" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <http:operation location="/PermissionGetItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <http:operation location="/GroupGetItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <http:operation location="/DelegationGetItem" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecurityProviderHttpPost" type="tns:SecurityProviderHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ApplicationGetItem">
+      <http:operation location="/ApplicationGetItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserGetItem">
+      <http:operation location="/UserGetItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogon">
+      <http:operation location="/UserLogon" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogonByName">
+      <http:operation location="/UserLogonByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserLogoff">
+      <http:operation location="/UserLogoff" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersEmailByRol">
+      <http:operation location="/GetUsersEmailByRol" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PermissionGetItem">
+      <http:operation location="/PermissionGetItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupGetItem">
+      <http:operation location="/GroupGetItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelegationGetItem">
+      <http:operation location="/DelegationGetItem" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityProvider">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Servicio centralizador de seguridad para aplicaciones.</wsdl:documentation>
+    <wsdl:port name="SecurityProviderSoap" binding="tns:SecurityProviderSoap">
+      <soap:address location="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecurityProviderSoap12" binding="tns:SecurityProviderSoap12">
+      <soap12:address location="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecurityProviderHttpGet" binding="tns:SecurityProviderHttpGet">
+      <http:address location="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecurityProviderHttpPost" binding="tns:SecurityProviderHttpPost">
+      <http:address location="http://srv-rst02-adm:8090/WebServices/SecurityProvider.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
